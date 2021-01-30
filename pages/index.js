@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import ArticleList from '../components/ArticleList';
 import { server } from '../config';
 
@@ -29,11 +28,6 @@ export const getStaticProps = async () => {
 export default function Home({ articles }) {
   return (
     <>
-      <Head>
-        <title>WebDev News</title>
-        <meta name="keywords" content="Web development programming" />
-      </Head>
-
       <ArticleList articles={articles} />
     </>
   );

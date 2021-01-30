@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Meta from '../../../components/Meta';
 import { server } from '../../../config';
 // import { useRouter } from 'next/router';
 
@@ -31,7 +32,7 @@ import { server } from '../../../config';
 // };
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/posts/${context.params.id}`);
+  const res = await fetch(`${server}/api/articles/${context.params.id}`);
 
   const article = await res.json();
 
@@ -43,7 +44,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/posts`);
+  const res = await fetch(`${server}/api/articles`);
 
   const articles = await res.json();
 
@@ -62,7 +63,7 @@ const article = ({ article }) => {
 
   return (
     <>
-      {/* <Meta title={article.title} description={article.excerpt} /> */}
+      <Meta title={article.title} description={article.excerpt} />
       <h1>{article.title}</h1>
       <p>{article.body}</p>
       <br />
